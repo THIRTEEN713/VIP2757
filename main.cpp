@@ -1,7 +1,11 @@
-#include <iostream>
+#include "HomeWidge.h"
 
-int main() {
-    std::cout << "Hello, Git!" << std::endl;
-    return 0;
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    HomeWidge w;
+    w.show();
+    return a.exec();
 }
-// This is a simple C++ program that prints "Hello, World!" to the console.
