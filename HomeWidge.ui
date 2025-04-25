@@ -44,16 +44,16 @@ border:1px solid rgb(30, 157, 255);
        <number>0</number>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="bottomMargin">
-       <number>5</number>
+       <number>10</number>
       </property>
       <item>
        <layout class="QHBoxLayout" name="TtitleLayout">
@@ -194,7 +194,8 @@ border:none;
 }
 #Upload:pressed{
 	background-color: rgb(10, 55, 103);
-}</string>
+}
+</string>
              </property>
              <property name="text">
               <string/>
@@ -349,12 +350,440 @@ border:none;
         </item>
         <item>
          <widget class="QStackedWidget" name="FunctionList">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
           <widget class="QWidget" name="UploadWidget">
            <property name="styleSheet">
             <string notr="true">#UploadWidget{
 	background-color: rgb(10, 55, 103);
 }</string>
            </property>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QStackedWidget" name="CheckStackedWidget">
+              <property name="currentIndex">
+               <number>1</number>
+              </property>
+              <widget class="QWidget" name="CheckFilesLayout">
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <spacer name="LeftSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="CheckLayout">
+                  <item>
+                   <spacer name="TopSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="CheckButton">
+                    <item>
+                     <widget class="QPushButton" name="CheckFiles">
+                      <property name="minimumSize">
+                       <size>
+                        <width>140</width>
+                        <height>140</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>140</width>
+                        <height>140</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">#CheckFiles{
+border:none;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset theme="QIcon::ThemeIcon::WindowNew"/>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>130</width>
+                        <height>130</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="CheckTips">
+                    <property name="font">
+                     <font>
+                      <pointsize>15</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>点击上传或拖动文件到此</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="BottomSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="RightSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>230</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="CheckFileTree">
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <item>
+                 <widget class="QListWidget" name="FilesTree"/>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="BackupOption">
+                  <item>
+                   <widget class="QCheckBox" name="CheckAll">
+                    <property name="styleSheet">
+                     <string notr="true">#CheckAll{
+color:#ffffff;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>选择全部</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="AppendFiles">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>80</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>新增</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="RemoveFiles">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>80</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>移除</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="RemoveAll">
+                    <property name="minimumSize">
+                     <size>
+                      <width>80</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>80</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>全部移除</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="Spacer">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="CheckBackupNode">
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="placeholderText">
+                     <string>备份节点</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="CheckBackupWay">
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="placeholderText">
+                     <string>备份方式</string>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>定时备份</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>立即备份</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="ToolButton">
+                  <item>
+                   <spacer name="ToolButtonSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="CancelUpload">
+                    <property name="text">
+                     <string>取消</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="EnterUpload">
+                    <property name="text">
+                     <string>确认</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="DownloadWidget">
+           <property name="styleSheet">
+            <string notr="true">#DownloadWidget{
+	background-color: rgb(10, 55, 103);
+}</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QStackedWidget" name="RemoteStacked">
+              <property name="styleSheet">
+               <string notr="true">#RemoteStacked{
+	background-color: rgb(10, 55, 103);
+}</string>
+              </property>
+              <widget class="QWidget" name="CheckNode">
+               <property name="styleSheet">
+                <string notr="true">#CheckNode{
+	background-color: rgb(10, 55, 103);
+}</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                 <widget class="QComboBox" name="comboBox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>200</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>选择节点</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>本地节点1</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="RemoteFolder">
+               <property name="styleSheet">
+                <string notr="true">#RemoteFolder{
+	background-color: rgb(10, 55, 103);
+}</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QLabel" name="RemoteName">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#RemoteName{
+color:#c0c0c0;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTreeWidget" name="FolderTree"/>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="DownloadToolOption">
+                  <item>
+                   <widget class="QCheckBox" name="CheckAllFolder">
+                    <property name="text">
+                     <string>全部选择</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="RemoteSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="NewFolder">
+                    <property name="text">
+                     <string>新建</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="Delete">
+                    <property name="text">
+                     <string>删除</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="DownloadFolder">
+                    <property name="text">
+                     <string>下载</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="TasklistWidget">
            <property name="styleSheet">
@@ -363,21 +792,93 @@ border:none;
 	background-color: rgb(10, 55, 103);
 }</string>
            </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QTabWidget" name="TaskStackedWidget">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="Downloading">
+               <attribute name="title">
+                <string>进行中</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QListWidget" name="DownloadingList"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="Finishsed">
+               <attribute name="title">
+                <string>已完成</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QListWidget" name="FinishedList"/>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="NodelistWidget">
            <property name="styleSheet">
             <string notr="true">#NodelistWidget{
-	background-color: rgb(10, 55, 103);
+	background-color: rgb(50, 75, 123);
 }
 </string>
            </property>
-          </widget>
-          <widget class="QWidget" name="DownloadWidget">
-           <property name="styleSheet">
-            <string notr="true">#DownloadWidget{
-	background-color: rgb(10, 55, 103);
-}</string>
-           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QListWidget" name="listWidget"/>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="NodToolOption">
+              <item>
+               <widget class="QCheckBox" name="CheckAllNode">
+                <property name="text">
+                 <string>选择全部</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="NoderSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="NewNode">
+                <property name="text">
+                 <string>新增节点</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="RemoveNode">
+                <property name="text">
+                 <string>移除节点</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="ChangeNode">
+                <property name="text">
+                 <string>更改配置</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
